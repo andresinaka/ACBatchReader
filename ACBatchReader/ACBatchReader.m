@@ -52,10 +52,12 @@
         if (batch.count > 0) {
             [self dispatchBatch:batch];
         }
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate batchFinished];
-        });
+        
+        if ([self.delegate respondsToSelector:@selector(batchFinished)]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate batchFinished];
+            });
+        }
     });
 }
 
