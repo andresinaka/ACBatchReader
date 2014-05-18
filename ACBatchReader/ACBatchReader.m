@@ -32,6 +32,11 @@
         NSLog(@"No delegate is available to return the batch");
         return;
     }
+    
+    if (!parser) {
+        NSLog(@"No parser provided");
+        return;
+    }
 
     NSArray *contentArray = [NSArray arrayWithContentsOfFile:self.filePath];
     NSMutableArray *batch = [[NSMutableArray alloc] init];
